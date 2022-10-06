@@ -23,13 +23,13 @@ html {
 }
 
 .col {
-    float: left;
+    /* float: left; */
     padding-left: 8px;
     padding-right: 8px;
 }
 
 .mt-8 {
-    margin-top: 8px !important;
+    margin-top: 8px;
 }
 
 .col-full {
@@ -45,8 +45,11 @@ html {
 }
 
 .row {
+    display:flex;
+    flex-wrap:wrap;
     margin-left: -8px;
     margin-right: -8px;
+    justify-content: space-between;
 }
 
 .row::after {
@@ -57,30 +60,58 @@ html {
 
 
 #header {
-    height: 46px;
+    max-height: 46px;
     background-color: #000;
-    z-index: 1;
+    z-index: 10;
     position: fixed;
     top: 0;
+    width: 100%;
+}
+#header.hiden{
+    max-height: 184px;
+}
+
+.menubt{
+    display: none;
+    float: right;   
+    position: absolute;
+    top: 0;
     right: 0;
-    left: 0;
+    padding: 11px 20px;
+    background-color: #000;
+    border-radius: 4px;
 }
 
-#header .searchbt {
-    display: inline-block;
-    float: right;
-}
-
-#header .searchicon {
+.menuicon{
     color: #fff;
     font-size: 18px;
     font-weight: 700;
     line-height: 46px;
-    padding: 0 20px;
+}
+.menubt:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.searchbt {
+    display: inline-block;
+    float: right;   
+    position: absolute;
+    top: 0;
+    right: 0;   
+    border-radius: 4px;
+    padding: 11px 20px;
+}
+
+.searchicon {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 46px;
 
 }
 
-#header .searchbt:hover {
+.searchbt:hover {
     background-color: #f44336;
     cursor: pointer;
 }
@@ -104,14 +135,16 @@ html {
     list-style-type: none;
     display: none;
     position: absolute;
+    border-radius: 2px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .nav>li>a {
     color: #fff;
-
     padding: 12px 24px;
     text-transform: uppercase;
+    border-radius: 4px;
 }
 
 .nav li a {
@@ -175,7 +208,7 @@ html {
 #content {}
 
 #content .content-size {
-    width: 800px;
+    max-width: 800px;
     margin: 0 79px;
     padding: 64px 16px;
 
@@ -213,23 +246,26 @@ html {
 }
 
 #content .member {
-    padding: 32px 0;
+    padding: 32px 0;    display: flex;
+    justify-content: space-between;
 }
 
 #content .listmember {
     float: left;
-
 
 }
 
 #content .member-name {
     font-size: 15px;
     margin: 15px 0;
+    text-align: center;
 }
 
 #content .member-img {
-    width: 153px;
+    width: 60%;
     border-radius: 5px;
+    display: block;
+    margin: 0 auto;
 }
 
 #content .tourdatebg {
@@ -239,7 +275,7 @@ html {
 
 #content .tickets-list li {
     display: block;
-    width: 800px;
+    max-width: 800px;
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     color: rgba(0, 0, 0, 0.6);
@@ -271,7 +307,7 @@ html {
 
 #content .timeselltk {
     background-color: #fff;
-    width: 245px;
+    width: 100%;
     padding: 0 16px;
 }
 
@@ -319,22 +355,21 @@ html {
 }
 
 #content .buy-ticket {
-
-
-    display: block;
+    /* display: flex;
+    justify-content: space-between; */
     padding: 32px 16px;
-    margin: 0 -16px;
+    margin: 0px -24px;
 }
-
 #content .ny-ticket {
 
-    /* margin-left: 11px; */
+    /* width: 100%; */
+    display: block;
 
 
 }
 
 #content .ny-img {
-    width: 245px;
+    width: 100%;
     display: inline-block;
 }
 
@@ -429,16 +464,18 @@ html {
 .modal-content {
     /* padding-top: 100px; */
     background-color: #fff;
-    width: 900px;
-    position: relative;
-    max-width: calc(100%-32px);
+    width: 80%;
+    position: absolute;
+    top: 190px;
+    max-width: 900px;
     animation: modalanimation ease 0.3s;
+    border-radius: 8px;
 }
 
 .modal-header {
     background-color: #009688 !important;
 
-    height: 129px;
+    height: 120px;
     color: #fff;
 
 }
@@ -481,13 +518,15 @@ html {
 .modal-contener .modal-input {
     line-height: 22px;
     padding: 8px;
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.6);
-    width: 850px;
+    max-width: 900px;
 }
 
 .modal-contener .buy-ticket {
-    width: 850px;
+    max-width: 900px;
     height: 50px;
+    width: 100%;
     background-color: #009688;
     color: #fff;
     border: none;
@@ -532,4 +571,32 @@ html {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+@media (max-width:600px) {
+    .col-third{
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+    .col-half{
+        width: 100%;
+    }
+    .searchbt {
+        display: none;
+    }
+    .menubt{
+        display: block;
+    }
+    .nav{
+        display: flex;
+        flex-direction: column;
+    }
+    .nav li>a{
+        width: 100%;
+    }
+    #header{
+        overflow: hidden;
+    }
+
 }

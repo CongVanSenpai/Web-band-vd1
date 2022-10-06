@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="/Source/Fonts/themify-icons-font/themify-icons/themify-icons.css">
+    <!-- <link rel="stylesheet" href="./assets/css/respone.css"> -->
     <title>The Band</title>
 </head>
 
 <body>
     <div id="main">
-        <div id="header">
+        <div id="header" class="">
             <ul class="nav">
                 <li><a href="#">Home</a></li>
                 <li><a href="#Band">Band</a></li>
@@ -31,6 +32,9 @@
                     </ul>
                 </li>
             </ul>
+            <button class="menubt js-menubt">
+                <i class="menuicon ti-menu-alt"></i>
+            </button>
             <div class="searchbt">
                 <i class="searchicon ti-search"></i>
             </div>
@@ -57,7 +61,7 @@
                     mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.</p>
-                <div class="member ">
+                <div class="member row">
                     <div class="listmember col-third col">
                         <p class="member-name">Name</p>
                         <img src="/Project/w3_webBand/assets/img/bandmember.jpg" alt="Name" class="member-img">
@@ -233,6 +237,20 @@
     const modal = document.querySelector('.js-modal')
     const close = document.querySelector('.js-modal-close')
     const modalContent = document.querySelector('.js-modal-content')
+
+    const menuBtn=document.querySelector('.js-menubt')
+    const header=document.getElementById('header')
+    function showHeader(){
+        if(header.className.indexOf('hiden')==-1){
+            header.className+= 'hiden'
+        }else{
+            header.className=header.className.replace('hiden',"")
+        }
+        console.log(header.className);
+    }
+    menuBtn.addEventListener('click',showHeader)
+
+
     function showbuyticket() {
         modal.classList.add('open')
     }
